@@ -1,0 +1,10 @@
+package views 
+
+templ Error(e error) {
+	@base() {
+		<div>
+			<h1>Error</h1>
+			<p>{ e.Error() }</p>
+		</div>
+	}
+}

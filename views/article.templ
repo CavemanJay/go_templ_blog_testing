@@ -1,0 +1,25 @@
+
+package views
+
+import (
+	"context"
+	"io"
+)
+
+func unsafe(html string) templ.Component {
+	return templ.ComponentFunc(func(ctx context.Context, w io.Writer) (err error) {
+		_, err = io.WriteString(w, html)
+		return
+	})
+}
+
+templ Article(title, content string) {
+	@base() {
+		<div class="container mx-auto mt-14">
+			<h1 class="text-2xl">{ title }</h1>
+			<article class="leading-normal prose lg:prose-xl">
+				@unsafe(content)
+			</article>
+		</div>
+	}
+}
